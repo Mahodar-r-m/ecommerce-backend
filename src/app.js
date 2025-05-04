@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 
@@ -13,9 +14,11 @@ app.use(morgan('dev'));
 app.use('/api/users', userRoutes);
 
 const errorMiddleware = require('./middlewares/errorMiddleware');
-app.use('/api/users', userRoutes);
-app.use(errorMiddleware);  // must come after routes
 
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+
+app.use(errorMiddleware);  // must come after routes
 
 // global error handler (optional)
 app.use((err, req, res, next) => {
