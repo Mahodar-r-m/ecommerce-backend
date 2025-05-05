@@ -25,6 +25,6 @@ const productSchema = new mongoose.Schema({
 // Create a text index on the 'name' and 'description' fields of the Product schema.
 // This allows efficient full-text search queries on these fields using MongoDB's $text operator.
 // Note: A collection can have only one text index, so include all searchable fields here.
-productSchema.index({ name: 'text', description: 'text' });
+productSchema.index({ name: 'text', description: 'text', brand: 'text' });
 
 module.exports = mongoose.model('Product', productSchema);

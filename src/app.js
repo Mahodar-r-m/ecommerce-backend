@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 
 app.use(errorMiddleware);  // must come after routes
 

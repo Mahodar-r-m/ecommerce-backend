@@ -21,6 +21,8 @@ const userSchema = new mongoose.Schema({
     enum: ['customer', 'admin'],
     default: 'customer'
   },
+  passwordResetToken: String, // Field to store the hashed reset token
+  passwordResetExpires: Date, // Field to store the expiration time of the reset token
 }, {
   timestamps: true
 });

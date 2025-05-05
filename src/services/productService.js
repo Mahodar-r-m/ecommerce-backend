@@ -2,7 +2,7 @@ const Product = require('../models/productModel');
 
 exports.getProducts = async ({ search, page = 1, limit = 10 }) => {
   const query = {};
-
+  console.log(`page: ${page}, limit: ${limit}`);
   if (search) {
     query.$text = { $search: search };
   }
