@@ -51,7 +51,7 @@ exports.resetPassword = async (token, newPassword) => {
       passwordResetExpires: { $gt: Date.now() },
     });
   
-    if (!user) throw new AppError('Invalid or expired reset token', 400);
+    if (!user) throw new AppError('Token is invalid or has expired', 400);
     user.password = newPassword;
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;

@@ -8,7 +8,8 @@
     "dev": "nodemon server.js",
     "seed:users": "node src/seeders/userSeeder.js",
     "seed:products": "node src/seeders/productSeeder.js",
-    "test": "jest"
+    "test": "jest",
+    "test-cov": "jest --coverage"
   },
   "keywords": [],
   "author": "",
