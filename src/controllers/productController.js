@@ -9,3 +9,30 @@ exports.getProducts = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.createProduct = async (req, res, next) => {
+  try {
+    const product = await productService.createProduct(req.body);
+    res.status(201).json({ success: true, data: product });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.updateProduct = async (req, res, next) => {
+  try {
+    const product = await productService.updateProduct(req.params.id, req.body);
+    res.json({ success: true, data: product });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.deleteProduct = async (req, res, next) => {
+  try {
+    await productService.deleteProduct(req.params.id);
+    res.status(204).send(); // No content
+  } catch (err) {
+    next(err);
+  }
+};

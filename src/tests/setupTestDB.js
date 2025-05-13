@@ -25,15 +25,21 @@ beforeAll(async () => {
 });
 
 // After each test, clean all collections (ensures isolation)
-afterEach(async () => {
+// afterEach(async () => {
+//   const collections = mongoose.connection.collections;
+//   for (const key in collections) {
+//     await collections[key].deleteMany();
+//   }
+// });
+
+// After all tests complete, disconnect and stop in-memory server
+afterAll(async () => {
+  // Added for product service tests
   const collections = mongoose.connection.collections;
   for (const key in collections) {
     await collections[key].deleteMany();
   }
-});
 
-// After all tests complete, disconnect and stop in-memory server
-afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
 });
